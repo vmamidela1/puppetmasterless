@@ -17,7 +17,7 @@ class goapp::install {
     provider 	=> git,
     source 	=> "${goapp::goapprepo}",
     revision 	=> "${goapp::goappversion}",
-    notify 	=> Exec['deleteoldbinary'],
+    notify 	=> [Exec['deleteoldbinary'],Exec['installgoapp']]
   }
 
   exec { 'deleteoldbinary':
@@ -33,6 +33,7 @@ class goapp::install {
     refreshonly => true,
     unless	=> "/usr/bin/test -f ${goapp::goinstallpath}/go/bin/goapp",
     notify 	=> Service['goapp'],
+    require	=> Exec['deleteoldbinary'],
   } 
 
 }
