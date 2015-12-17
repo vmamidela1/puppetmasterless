@@ -30,6 +30,7 @@ class goapp::install {
   exec {'installgoapp':
     command 	=> "/bin/sh install.sh ",
     cwd 	=> "/tmp/goapp",
+    environment	=> ["GOROOT=${goapp::goinstallpath}/go", "GOBIN=${goapp::goinstallpath}/go/bin"],
     refreshonly => true,
     unless	=> "/usr/bin/test -f ${goapp::goinstallpath}/go/bin/goapp",
     notify 	=> Service['goapp'],
