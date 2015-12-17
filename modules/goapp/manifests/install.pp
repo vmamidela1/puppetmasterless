@@ -17,15 +17,22 @@ class goapp::install {
     provider 	=> git,
     source 	=> "${goapp::goapprepo}",
     revision 	=> "${goapp::goappversion}",
+    notify 	=> Exec['deleteoldbinary'],
+  }
+
+  exec { 'deleteoldbinary':
+    command 	=> "/bin/rm -rf ${goapp::goinstallpath}/go/bin/goapp",
+    refreshonly => true,
+    onlyif	=> "/usr/bin/test -f ${goapp::goinstallpath}/go/bin/goapp",
     notify 	=> Exec['installgoapp'],
   }
 
- exec {'installgoapp':
+  exec {'installgoapp':
     command 	=> "/bin/sh install.sh ",
     cwd 	=> "/tmp/goapp",
     refreshonly => true,
     unless	=> "/usr/bin/test -f ${goapp::goinstallpath}/go/bin/goapp",
     notify 	=> Service['goapp'],
- } 
+  } 
 
 }
