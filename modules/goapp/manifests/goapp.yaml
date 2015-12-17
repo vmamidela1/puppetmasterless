@@ -1,5 +1,5 @@
 ---
-goappversion: '1.x-1.1'
+goappversion: 'v1.0'
 gobinarydl: 'https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz'
 goinstallpath: '/usr/local/bin'
 gobinaryfile: 'go1.5.2.linux-amd64.tar.gz'
