@@ -1,0 +1,8 @@
+---
+:backends:
+ - yaml
+:hierarchy:
+ - %{module_name}/manifests/%{module_name}
+ - %{module_name}/manifests/%{module_name}-%{environment}
+:yaml:
+ :datadir: /etc/puppet/modules

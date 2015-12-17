@@ -1,0 +1,15 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+export GOROOT=/usr/local/bin/go
+export GOBIN=$GOROOT/bin
+export PATH=$PATH:$GOBIN
+
+export PATH

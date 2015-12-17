@@ -1,0 +1,14 @@
+#
+# Custom Virutal host configuration
+#
+server {
+    listen       80;
+    server_name  www.web1.com;
+    access_log  /var/log/nginx/web1.access.log  main;
+    location / {
+        proxy_pass http://appservers;
+    }
+
+}
+
+

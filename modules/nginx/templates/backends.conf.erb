@@ -1,0 +1,7 @@
+<% appservers = scope.lookupvar('nginx::goappweb::appservers') -%>
+
+upstream appservers {
+<%- appservers.each do |appserver| -%>
+        server <%= appserver -%>:8484;
+<%- end -%>
+}
