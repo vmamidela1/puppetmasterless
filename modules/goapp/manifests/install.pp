@@ -24,6 +24,7 @@ class goapp::install {
     command 	=> "/bin/sh install.sh ",
     cwd 	=> "/tmp/goapp",
     refreshonly => true,
+    unless	=> "/usr/bin/test -f ${goapp::goinstallpath}/go/bin/goapp",
     notify 	=> Service['goapp'],
  } 
 
